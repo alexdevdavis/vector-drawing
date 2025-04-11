@@ -1,5 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib.spines as msp
+import matplotlib.path as mpath
 
 dino_vectors = [
     np.array([6, 4]),
@@ -37,6 +39,18 @@ ax.spines['right'].set_visible(False)
 ax.spines['left'].set_linewidth(2)
 ax.spines['bottom'].set_linewidth(2)
 
+
+origin_x_spine = msp.Spine(ax, 'bottom', mpath.Path([[0.0,0.0], [1.0, 0.0]])) 
+origin_x_spine.set_linewidth(2)
+ax.spines['origin_x'] = origin_x_spine
+ax.add_patch(origin_x_spine)
+
+origin_y_spine = msp.Spine(ax, 'left', mpath.Path([[0.0,0.0], [0.0, 0.0]])) 
+origin_y_spine.set_linewidth(2)
+ax.spines['origin_y'] = origin_y_spine
+ax.add_patch(origin_y_spine)
+
+
 min_x = min(dino_x) if dino_x else -6
 min_y = min(dino_y) if dino_y else -6
 max_x = max(dino_x) if dino_x else 6
@@ -46,9 +60,10 @@ padding = 1
 ax.set_xlim((min_x - padding, max_x + padding))
 ax.set_ylim((min_y - padding, max_y + padding))
 
-ax.set_xlabel('x', loc='right')
-ax.set_ylabel('y', loc='top', rotation=0)
-
+ax.set_xlabel('x', loc='right', labelpad=2)
+ax.set_ylabel('y', loc='top', rotation=0, labelpad=1)
+ax.xaxis.set_ticks_position('bottom')
+ax.yaxis.set_ticks_position('left')
 
 ax.plot(dino_x, dino_y, 'ro-')
 
