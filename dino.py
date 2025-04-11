@@ -57,5 +57,6 @@ ax.set_aspect('equal', adjustable='box')
 plt.title('Dino Plot')
 
 plt.grid(True)
+fig.savefig('dino_plot.png')
 plt.show()
 
