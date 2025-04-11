@@ -65,7 +65,8 @@ ax.set_ylabel('y', loc='top', rotation=0, labelpad=1)
 ax.xaxis.set_ticks_position('bottom')
 ax.yaxis.set_ticks_position('left')
 
-ax.plot(dino_x, dino_y, 'ro-')
+ax.plot(0,0, 'x', markersize=8, markeredgewidth=2)
+ax.plot(dino_x, dino_y, 'o-')
 
 ax.set_aspect('equal', adjustable='box')
 
